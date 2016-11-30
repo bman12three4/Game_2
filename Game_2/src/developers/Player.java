@@ -5,12 +5,10 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class Player {
-	
-	JLabel sprite;
+
+	BufferedImage img;
 
 	/**
 	 * Default Constructor
@@ -18,11 +16,13 @@ public class Player {
 	public Player() {
 		// Default Constructor, nothing here
 	}
-	
-	public Player(String path) throws IOException{
-        File file = new File(path);
-        BufferedImage image = ImageIO.read(file);
-        sprite = new JLabel(new ImageIcon(image));
+
+	public Player(String path) throws IOException {
+		try {
+			img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			System.out.println("No such File (Player.java:22)");
+		}
 	}
 
 }
