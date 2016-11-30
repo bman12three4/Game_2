@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Player {
+	
+	JLabel sprite;
 
 	/**
 	 * Default Constructor
@@ -20,7 +22,7 @@ public class Player {
 	public Player(String path) throws IOException{
         File file = new File(path);
         BufferedImage image = ImageIO.read(file);
-        JLabel label = new JLabel(new ImageIcon(image));
+        sprite = new JLabel(new ImageIcon(image));
 	}
 
 }
