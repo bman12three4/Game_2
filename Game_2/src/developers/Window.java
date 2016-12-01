@@ -1,5 +1,6 @@
 package developers;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +32,11 @@ public class Window extends JPanel{
 		} catch (IOException e){
 			System.out.println(e);
 		}
+	}
+	
+	public void paint(Graphics g){
+		super.paint(g);
+		Game2.getPlayer().paintComponent(g);
 	}
 	
 	
