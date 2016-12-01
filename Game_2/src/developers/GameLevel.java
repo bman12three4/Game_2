@@ -6,7 +6,7 @@ public class GameLevel {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final int[] xBoundLeft = {100};
+	public static final int[] xBoundLeft = {0};
 	public static final int[] xBoundRight = {500};
 	
 	public static boolean isInRange(int pos){

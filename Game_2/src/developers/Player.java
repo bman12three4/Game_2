@@ -23,8 +23,8 @@ import javax.swing.Timer;
 public class Player extends JComponent {
 
 	private static final long serialVersionUID = 1L;
-	private int xPos = 50, yPos = 50;
-	private int moveSpeed = 4;
+	private int xPos = 50, yPos = 800;
+	private int moveSpeed = 5;
 	private int xDelta = 0;
 	private int yDelta = 0;
 	
