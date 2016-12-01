@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import developers.elements.GameLevel;
+
 public class Window extends JPanel{
 	/**
 	 * 
@@ -52,6 +54,7 @@ public class Window extends JPanel{
 		super.paint(g);
 		g.drawImage(img, 0, 0, this);
 		Game2.getPlayer().paintComponent(g);
+		GameLevel.getPlat(0).paintComponent(g);
 	}
 	
 	

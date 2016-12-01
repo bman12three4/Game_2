@@ -46,10 +46,13 @@ public class LargePlatform extends JComponent{
 		this.y = y;
 	}
 
-	public LargePlatform(int x, int y) {
+	public LargePlatform(int x, int y) throws IOException {
 		this.x = x;
 		this.y = y;
 		dim = new Dimension(500, 20);
+		this.img = ImageIO.read(cl.getResource("img/largeplatform.png"));
+		GameLevel.addPlatform(this);
+		System.out.println("created platform");
 	}
 	
 	public LargePlatform(int x, int y, Dimension dim, BufferedImage img) {
@@ -57,6 +60,7 @@ public class LargePlatform extends JComponent{
 		this.y = y;
 		this.dim = dim;
 		this.img = img;
+		GameLevel.addPlatform(this);
 	}
 	
 	public LargePlatform(int x, int y, int xPos, int yPos, BufferedImage img) {
@@ -64,6 +68,8 @@ public class LargePlatform extends JComponent{
 		this.y = y;
 		setDim(xPos, yPos);
 		this.img = img;
+		GameLevel.addPlatform(this);
+		repaint();
 	}
 	
 	public LargePlatform(int x, int y, Dimension dim, String path) throws IOException {
@@ -71,6 +77,7 @@ public class LargePlatform extends JComponent{
 		this.y = y;
 		this.dim = dim;
 		this.img = ImageIO.read(cl.getResource(path));
+		GameLevel.addPlatform(this);
 	}
 	
 	public LargePlatform(int x, int y, int xPos, int yPos, String path) throws IOException {
@@ -78,11 +85,13 @@ public class LargePlatform extends JComponent{
 		this.y = y;
 		setDim(xPos, yPos);
 		this.img = ImageIO.read(cl.getResource(path));
+		GameLevel.addPlatform(this);
 	}
 	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		System.out.println("drew platform");
 		g.drawImage(img, x, y, this);
 	}
 

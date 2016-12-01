@@ -20,11 +20,14 @@ package developers;
 
 import java.io.IOException;
 
+import developers.elements.LargePlatform;
+
 public class Game2 {
 
 	private static boolean init = false;
 
 	private static Player player;
+	static LargePlatform plat1;
 
 	public static Player getPlayer() {
 		return player;
@@ -39,6 +42,7 @@ public class Game2 {
 			printLicense();
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
+			plat1 = new LargePlatform(200, 300);
 			init = true;
 		}
 		WindowRunner.run();
