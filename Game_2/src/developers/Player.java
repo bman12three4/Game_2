@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Level;
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
@@ -136,6 +135,10 @@ public class Player extends JComponent {
 
 	class HorizAction extends AbstractAction {
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		boolean keyDown;
 		int dir;
 		
@@ -164,6 +167,10 @@ public class Player extends JComponent {
 	
 	class VertAction extends AbstractAction {
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		boolean keyDown;
 		int dir;
 		
