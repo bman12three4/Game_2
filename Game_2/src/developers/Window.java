@@ -17,48 +17,46 @@ import javax.swing.JPanel;
 
 import developers.elements.GameLevel;
 
-public class Window extends JPanel{
+public class Window extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	static JLabel name = new JLabel("Game_2");
-	
+
 	ClassLoader cl = this.getClass().getClassLoader();
 	BufferedImage img;
-	
-	public static JLabel returnName(){
+
+	public static JLabel returnName() {
 		return name;
 	}
-	
+
 	static JLabel logo;
-	
-	public void makeLogo(String path){
+
+	public void makeLogo(String path) {
 		try {
-		File file = new File(path);
-        BufferedImage image = ImageIO.read(file);
-        logo = new JLabel(new ImageIcon(image));
-		} catch (IOException e){
+			File file = new File(path);
+			BufferedImage image = ImageIO.read(file);
+			logo = new JLabel(new ImageIcon(image));
+		} catch (IOException e) {
 			System.out.println(e + " Window.java:33");
 		}
-		
-		try {
-			img = ImageIO.read(cl.getResource("img/background.png"));
-		} catch (IOException e) {
-			System.out.println(e);
+
+		if (Settings.enableBackground) {
+			try {
+				img = ImageIO.read(cl.getResource("img/background.png"));
+			} catch (IOException e) {
+				System.out.println(e);
+			}
 		}
 	}
-	
-	public void paint(Graphics g){
+
+	public void paint(Graphics g) {
 		super.paint(g);
 		g.drawImage(img, 0, 0, this);
 		Game2.getPlayer().paintComponent(g);
 		GameLevel.getPlat(0).paintComponent(g);
 	}
-	
-	
-	
-	
-	
+
 }
