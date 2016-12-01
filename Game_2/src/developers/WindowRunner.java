@@ -29,7 +29,7 @@ public class WindowRunner {
 
 	public static void init(String name) throws IOException {
 		frame = new JFrame(name);
-		Window.makeLogo("/img/logo.png");
+		panel.makeLogo("/img/logo.png");
 		frame.add(panel);
 		frame.setJMenuBar(new MenuBar());
 		frame.setSize(800, 1000);

@@ -23,13 +23,16 @@ public class Window extends JPanel{
 	
 	static JLabel name = new JLabel("Game_2");
 	
+	ClassLoader cl = this.getClass().getClassLoader();
+	BufferedImage img;
+	
 	public static JLabel returnName(){
 		return name;
 	}
 	
 	static JLabel logo;
 	
-	public static void makeLogo(String path){
+	public void makeLogo(String path){
 		try {
 		File file = new File(path);
         BufferedImage image = ImageIO.read(file);
@@ -37,12 +40,20 @@ public class Window extends JPanel{
 		} catch (IOException e){
 			System.out.println(e + " Window.java:33");
 		}
+		
+		try {
+			img = ImageIO.read(cl.getResource("img/background.png"));
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 	}
 	
 	public void paint(Graphics g){
 		super.paint(g);
+		g.drawImage(img, 0, 0, this);
 		Game2.getPlayer().paintComponent(g);
 	}
+	
 	
 	
 	
