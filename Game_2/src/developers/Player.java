@@ -20,6 +20,8 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
+import developers.elements.GameLevel;
+
 public class Player extends JComponent {
 
 	private static final long serialVersionUID = 1L;
