@@ -17,16 +17,20 @@ public class Window extends JPanel{
 	
 	static JLabel name = new JLabel("Game_2");
 	
-	public static JLabel gameName(){
+	public static JLabel returnName(){
 		return name;
 	}
 	
 	static JLabel logo;
 	
-	public static void makeLogo(String path) throws IOException{
+	public static void makeLogo(String path){
+		try {
 		File file = new File(path);
         BufferedImage image = ImageIO.read(file);
         logo = new JLabel(new ImageIcon(image));
+		} catch (IOException e){
+			System.out.println(e);
+		}
 	}
 	
 	

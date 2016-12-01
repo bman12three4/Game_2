@@ -12,13 +12,20 @@ import javax.swing.JFrame;
 public class WindowRunner{
 
 	private static JFrame frame;
+	
+	public static JFrame getFrame(){
+		return frame;
+	}
 		
 	public static void init(String name) throws IOException{
 		frame = new JFrame(name);
-		frame.add(Window.gameName());
 		Window.makeLogo("/img/logo.png");
-		frame.pack();
+		frame.setSize(800, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+	}
+	
+	public static void run(){
+		
 	}
 }
