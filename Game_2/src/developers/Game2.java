@@ -41,7 +41,8 @@ public class Game2 {
 			WindowRunner.init("Game_2");
 			init = true;
 		}
-		WindowRunner.getPanel().repaint();
+		//WindowRunner.getPanel().repaint();
+		WindowRunner.run();
 	}
 	
 	public static final void printLicense(){
