@@ -1,3 +1,8 @@
+/*
+	Game_2 
+    Copyright (C) 2016  Lovett Developers Club
+*/
+
 package developers;
 
 import java.awt.event.ActionEvent;

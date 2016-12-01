@@ -1,3 +1,8 @@
+/*
+	Game_2 
+    Copyright (C) 2016  Lovett Developers Club
+*/
+
 package developers;
 
 import java.io.IOException;
@@ -7,22 +12,22 @@ import javax.swing.JFrame;
 /**
  * @author Byron Lathi
  *
- * Runs the window 
+ *         Runs the window
  */
-public class WindowRunner{
+public class WindowRunner {
 
 	private static JFrame frame;
 	private static Window panel = new Window();
-	
-	public static Window getPanel(){
+
+	public static Window getPanel() {
 		return panel;
 	}
-	
-	public static JFrame getFrame(){
+
+	public static JFrame getFrame() {
 		return frame;
 	}
-		
-	public static void init(String name) throws IOException{
+
+	public static void init(String name) throws IOException {
 		frame = new JFrame(name);
 		Window.makeLogo("/img/logo.png");
 		frame.add(panel);
@@ -31,8 +36,8 @@ public class WindowRunner{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-	
-	public static void run(){
+
+	public static void run() {
 		Game2.getPlayer().repaint();
 	}
 }
