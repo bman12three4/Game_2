@@ -7,7 +7,7 @@ public class GameLevel {
 	}
 	
 	public static final int[] xBoundLeft = {0};
-	public static final int[] xBoundRight = {500};
+	public static final int[] xBoundRight = {800};
 	
 	public static boolean isInRange(int pos){
 		for (int i = 0; i < xBoundRight.length && i < xBoundRight.length; i++){
