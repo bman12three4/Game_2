@@ -14,6 +14,7 @@ public class GameLevel {
 			if (pos > xBoundLeft[i] && pos < xBoundRight[i]){
 				return true;
 			}
+			System.out.println("hi");
 		}
 		return false;
 	}
