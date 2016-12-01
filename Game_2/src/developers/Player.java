@@ -9,21 +9,12 @@ import javax.imageio.ImageIO;
 
 public class Player extends Component{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
+	public int xPos = 0, yPos = 0;
 	
 	BufferedImage img;
 	ClassLoader cl = this.getClass().getClassLoader();
-
-	/**
-	 * Default Constructor
-	 * @author Byron Lathi
-	 */
-	public Player() {
-		// Default Constructor, nothing here
-	}
 
 	/**
 	 * Creates a player object, with a sprite. 
@@ -35,17 +26,18 @@ public class Player extends Component{
 		try {
 			img = ImageIO.read(cl.getResource(path));
 		} catch (IOException e) {
-			System.out.println("No such File: " + path + "(Player.java:22)");
+			System.out.println(e);
 		}
-		WindowRunner.getFrame().add(this);
+		WindowRunner.getPanel().add(this);
 	}
 	
 	/**
 	 * Draws the player on the screen.
 	 * @author Byron Lathi
 	 */
-	public void paint(Graphics g){
-		g.drawImage(img, 0, 0, this);
+	public void paintComponent(Graphics g){
+		super.paint(g);
+		g.drawImage(img, xPos, yPos, this);
 	}
 
 }
