@@ -35,8 +35,11 @@ public class Game2 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		player = new Player("img/dude.png");
-		WindowRunner.init("Game_2");
+		if (!init) {
+			player = new Player("img/dude.png");
+			WindowRunner.init("Game_2");
+			init = true;
+		}
 		WindowRunner.getPanel().repaint();
 	}
 
