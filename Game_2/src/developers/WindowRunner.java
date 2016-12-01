@@ -26,6 +26,7 @@ public class WindowRunner{
 		frame = new JFrame(name);
 		Window.makeLogo("/img/logo.png");
 		frame.add(panel);
+		frame.setJMenuBar(new MenuBar());
 		frame.setSize(800, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
