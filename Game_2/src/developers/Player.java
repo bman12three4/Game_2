@@ -26,6 +26,7 @@ public class Player extends JComponent {
 	private int xPos = 50, yPos = 50;
 	private int moveSpeed = 4;
 	private int xDelta = 0;
+	private int yDelta = 0;
 	
 	private Timer repaintTimer;
 
@@ -86,21 +87,34 @@ public class Player extends JComponent {
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "pressed.right");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "released.left");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "released.right");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
         
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false), "pressed.left");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, false), "pressed.right");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, true), "released.left");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, true), "released.right");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
 
         am.put("pressed.left", new HorizAction(-1, true));
         am.put("pressed.right", new HorizAction(1, true));
         am.put("released.left", new HorizAction(0, false));
         am.put("released.right", new HorizAction(0, false));
+        am.put("pressed.up", new VertAction(-1, true));
+        am.put("pressed.down", new VertAction(1, true));
+        am.put("released.up", new VertAction(0, false));
+        am.put("released.down", new VertAction(0, false));
 		
 		repaintTimer = new Timer(40, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 xPos += xDelta;
+                yPos += yDelta;
                 WindowRunner.getPanel().repaint();
             }
         });
@@ -136,6 +150,34 @@ public class Player extends JComponent {
 				xDelta = 0;
 			} else {
 				xDelta = dir*moveSpeed;
+			}
+			if (keyDown) {
+                if (!repaintTimer.isRunning()) {
+                    repaintTimer.start();
+                }
+            } else {
+                repaintTimer.stop();
+            }
+		}
+	}
+	
+	class VertAction extends AbstractAction {
+		
+		boolean keyDown;
+		int dir;
+		
+		public VertAction(int dir, boolean down) {
+			keyDown = down;
+			this.dir = dir;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			yDelta = -moveSpeed;
+			if (dir == 0){
+				yDelta = 0;
+			} else {
+				yDelta = dir*moveSpeed;
 			}
 			if (keyDown) {
                 if (!repaintTimer.isRunning()) {
