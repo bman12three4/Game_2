@@ -40,7 +40,7 @@ public class Window extends JPanel {
 			BufferedImage image = ImageIO.read(file);
 			logo = new JLabel(new ImageIcon(image));
 		} catch (IOException e) {
-			System.out.println(e + " Window.java:33");
+			Game2.log(e + " Window.java:33");
 		}
 
 		if (Settings.enableBackground) {

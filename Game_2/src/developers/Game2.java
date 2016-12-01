@@ -55,5 +55,11 @@ public class Game2 {
 				+ "under certain conditions; type `show c' for details.\n"
 				+ "\n(don't though, this doesn't take arguments)\n\n\n");
 	}
+	
+	public static void log(String s){
+		if (Settings.testMode){
+			System.out.println(s);
+		}
+	}
 
 }

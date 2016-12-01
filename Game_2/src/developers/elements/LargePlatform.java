@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
+import developers.Game2;
+
 public class LargePlatform extends JComponent{
 
 	private static final long serialVersionUID = 1L;
@@ -52,7 +54,6 @@ public class LargePlatform extends JComponent{
 		dim = new Dimension(500, 20);
 		this.img = ImageIO.read(cl.getResource("img/largeplatform.png"));
 		GameLevel.addPlatform(this);
-		System.out.println("created platform");
 	}
 	
 	public LargePlatform(int x, int y, Dimension dim, BufferedImage img) {
@@ -91,7 +92,7 @@ public class LargePlatform extends JComponent{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		System.out.println("drew platform");
+		Game2.log("drew platform");
 		g.drawImage(img, x, y, this);
 	}
 
