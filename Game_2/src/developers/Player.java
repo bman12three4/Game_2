@@ -10,11 +10,39 @@ import javax.imageio.ImageIO;
 public class Player extends Component{
 
 	private static final long serialVersionUID = 1L;
-	
-	public int xPos = 0, yPos = 0;
-	
+	private int xPos = 0, yPos = 0;
+
 	BufferedImage img;
 	ClassLoader cl = this.getClass().getClassLoader();
+	
+	/**
+	 * @return the X position of the player
+	 */
+	public int getxPos() {
+		return xPos;
+	}
+
+	/**
+	 * @param xPos the X position of the player to set
+	 */
+	public void setxPos(int xPos) {
+		this.xPos = xPos;
+	}
+
+	/**
+	 * @return the Y position of the player
+	 */
+	public int getyPos() {
+		return yPos;
+	}
+
+	/**
+	 * @param yPos the Y position of the player to set
+	 */
+	public void setyPos(int yPos) {
+		this.yPos = yPos;
+	}
+	
 
 	/**
 	 * Creates a player object, with a sprite. 
