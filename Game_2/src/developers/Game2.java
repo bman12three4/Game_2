@@ -36,6 +36,11 @@ public class Game2 {
 
 	public static void main(String[] args) throws IOException {
 		if (!init) {
+			System.out.println("Game_2  Copyright (C) 2016  Lovett Developers Club\n"
+					+ "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n"
+					+ "This is free software, and you are welcome to redistribute it\n"
+					+ "under certain conditions; type `show c' for details.\n"
+					+ "\n(don't though, this doesn't take arguments)\n\n\n");
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
 			init = true;
