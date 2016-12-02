@@ -28,6 +28,7 @@ public class Game2 {
 
 	private static Player player;
 	static LargePlatform plat1;
+	static LargePlatform plat2;
 
 	public static Player getPlayer() {
 		return player;
@@ -43,6 +44,7 @@ public class Game2 {
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
 			plat1 = new LargePlatform(200, 300);
+			plat2 = new LargePlatform(100, 600);
 			init = true;
 		}
 		WindowRunner.run();
@@ -57,7 +59,7 @@ public class Game2 {
 	}
 	
 	public static void log(String s){
-		if (Settings.testMode){
+		if (Settings.verboseMode){
 			System.out.println(s);
 		}
 	}

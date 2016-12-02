@@ -1,5 +1,7 @@
 package developers.elements;
 
+import java.awt.Graphics;
+
 import developers.Game2;
 
 public class GameLevel {
@@ -36,7 +38,13 @@ public class GameLevel {
 		platNum++;
 		for (int i = 0; i < platNum; i++){
 			lPlatforms[i].repaint();
-			Game2.log("repainting plats");
+			Game2.log("repainting plats " + i);
+		}
+	}
+	
+	public static void paintPlats(Graphics g){
+		for (int i = 0; i < platNum; i++){
+			lPlatforms[i].paintComponent(g);
 		}
 	}
 

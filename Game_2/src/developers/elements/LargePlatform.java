@@ -92,7 +92,7 @@ public class LargePlatform extends JComponent{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Game2.log("drew platform");
+		Game2.log("drew platform ");
 		g.drawImage(img, x, y, this);
 	}
 

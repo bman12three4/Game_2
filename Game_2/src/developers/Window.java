@@ -56,7 +56,7 @@ public class Window extends JPanel {
 		super.paint(g);
 		g.drawImage(img, 0, 0, this);
 		Game2.getPlayer().paintComponent(g);
-		GameLevel.getPlat(0).paintComponent(g);
+		GameLevel.paintPlats(g);
 	}
 
 }
