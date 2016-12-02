@@ -30,11 +30,14 @@ public class Player extends JComponent {
 	private int moveSpeed = 5;
 	private int xDelta = 0;
 	private int yDelta = 0;
-	
+
+	private int gDelay = 0;
+
 	private Timer repaintTimer;
 
 	BufferedImage img;
 	ClassLoader cl = this.getClass().getClassLoader();
+	private boolean enableGravity = true;
 
 	/**
 	 * @return the X position of the player
@@ -82,48 +85,48 @@ public class Player extends JComponent {
 		}
 		setFocusable(true);
 		WindowRunner.getPanel().add(this);
-		
+
 		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
-        ActionMap am = getActionMap();
+		ActionMap am = getActionMap();
 
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "pressed.left");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "pressed.right");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "released.left");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "released.right");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
-        
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false), "pressed.left");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, false), "pressed.right");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, true), "released.left");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, true), "released.right");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
-        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "pressed.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "pressed.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "released.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "released.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
 
-        am.put("pressed.left", new HorizAction(-1, true));
-        am.put("pressed.right", new HorizAction(1, true));
-        am.put("released.left", new HorizAction(0, false));
-        am.put("released.right", new HorizAction(0, false));
-        am.put("pressed.up", new VertAction(-1, true));
-        am.put("pressed.down", new VertAction(1, true));
-        am.put("released.up", new VertAction(0, false));
-        am.put("released.down", new VertAction(0, false));
-		
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false), "pressed.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, false), "pressed.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, true), "released.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, true), "released.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
+
+		am.put("pressed.left", new HorizAction(-1, true));
+		am.put("pressed.right", new HorizAction(1, true));
+		am.put("released.left", new HorizAction(0, false));
+		am.put("released.right", new HorizAction(0, false));
+		am.put("pressed.up", new VertAction(-1, true));
+		am.put("pressed.down", new VertAction(1, true));
+		am.put("released.up", new VertAction(0, false));
+		am.put("released.down", new VertAction(0, false));
+
 		repaintTimer = new Timer(40, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPos += xDelta;
-                yPos += yDelta;
-                WindowRunner.getPanel().repaint();
-            }
-        });
-        repaintTimer.setInitialDelay(0);
-        repaintTimer.setRepeats(true);
-        repaintTimer.setCoalesce(true);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				xPos += xDelta;
+				yPos += yDelta;
+				WindowRunner.getPanel().repaint();
+			}
+		});
+		repaintTimer.setInitialDelay(0);
+		repaintTimer.setRepeats(true);
+		repaintTimer.setCoalesce(true);
 	}
 
 	/**
@@ -135,44 +138,47 @@ public class Player extends JComponent {
 		super.paintComponent(g);
 		g.drawImage(img, xPos, yPos, this);
 	}
-	
-	private boolean checkBounds(){
-		if (xPos < 200 && yPos > 500){
+
+	private boolean checkBounds() {
+		if (xPos < 200 && yPos > 500) {
+			System.out.println("");
 			return true;
 		}
 		Platform[] plats = GameLevel.getPlat();
-		for (int i = 0; i < GameLevel.getPlatNum(); i++){
-			if (plats[i].inBounds(xPos, yPos)){
+		System.out.println("");
+		for (int i = 0; i < GameLevel.getPlatNum(); i++) {
+			System.out.println("");
+			if (plats[i].inBounds(xPos, yPos)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	public void gravity(){
-		int fDelay = 0;
-		if (Settings.verboseMode) System.out.println("Checking Gravity");
-		while (!checkBounds()){
-			if(Settings.verboseMode) System.out.println("Gravity be pullin");
-			if (fDelay == 1000){
-				yPos += 1;
-				fDelay = 0;
-				WindowRunner.getPanel().repaint();
+
+	public void gravity() {
+		if (enableGravity ) {
+			while (!checkBounds()) {
+				if (gDelay == 1000) {
+					System.out.println("");
+					yPos += 1;
+					gDelay = 1;
+					WindowRunner.getPanel().repaint();
+				}
+				gDelay++;
+
 			}
-			fDelay++;
-			
 		}
 	}
 
 	class HorizAction extends AbstractAction {
-		
+
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 		boolean keyDown;
 		int dir;
-		
+
 		public HorizAction(int dir, boolean down) {
 			keyDown = down;
 			this.dir = dir;
@@ -181,30 +187,30 @@ public class Player extends JComponent {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			xDelta = -moveSpeed;
-			if (dir == 0){
+			if (dir == 0) {
 				xDelta = 0;
 			} else {
-				xDelta = dir*moveSpeed;
+				xDelta = dir * moveSpeed;
 			}
 			if (keyDown) {
-                if (!repaintTimer.isRunning()) {
-                    repaintTimer.start();
-                }
-            } else {
-                repaintTimer.stop();
-            }
+				if (!repaintTimer.isRunning()) {
+					repaintTimer.start();
+				}
+			} else {
+				repaintTimer.stop();
+			}
 		}
 	}
-	
+
 	class VertAction extends AbstractAction {
-		
+
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 		boolean keyDown;
 		int dir;
-		
+
 		public VertAction(int dir, boolean down) {
 			keyDown = down;
 			this.dir = dir;
@@ -213,22 +219,24 @@ public class Player extends JComponent {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			yDelta = -moveSpeed;
-			if (dir == 0){
+			if (dir == 0) {
 				yDelta = 0;
 			} else {
-				if (GameLevel.isInRange(xPos)){
-					yDelta = dir*moveSpeed;
+				if (GameLevel.isInRange(xPos)) {
+					yDelta = dir * moveSpeed;
 				} else {
 					yDelta = 0;
 				}
 			}
 			if (keyDown) {
-                if (!repaintTimer.isRunning()) {
-                    repaintTimer.start();
-                }
-            } else {
-                repaintTimer.stop();
-            }
+				if (!repaintTimer.isRunning()) {
+					repaintTimer.start();
+				}
+				enableGravity = false;
+			} else {
+				repaintTimer.stop();
+				enableGravity = true;
+			}
 		}
 	}
 

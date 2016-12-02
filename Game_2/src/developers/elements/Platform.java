@@ -58,7 +58,7 @@ public class Platform extends JComponent {
 		this.x = x;
 		this.y = y;
 		size = s;
-		switch(size){
+		switch (size) {
 		case Large:
 			dim = new Dimension(500, 20);
 			this.img = ImageIO.read(cl.getResource("img/largeplatform.png"));
@@ -109,10 +109,14 @@ public class Platform extends JComponent {
 	}
 
 	public boolean inBounds(int x, int y) {
-		if (x > this.x && x < this.x+this.dim.width){
-			if (Settings.verboseMode) System.out.print(x > this.x && x < this.x+this.dim.width);
-			if (y + 110 == this.y){
-				if (Settings.verboseMode) System.out.print(y + 110 == this.y);
+		if (x > this.x && x < this.x + this.dim.width) {
+			if (Settings.verboseMode) {
+				System.out.print(x > this.x && x < this.x + this.dim.width);
+			}
+			if (y + 110 == this.y) {
+				if (Settings.verboseMode) {
+					System.out.print(y + 110 == this.y);
+				}
 				return true;
 			}
 		}
