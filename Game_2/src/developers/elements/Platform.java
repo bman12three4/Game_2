@@ -9,62 +9,76 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 import developers.Game2;
+import developers.Settings;
 
-public class LargePlatform extends JComponent{
+public class Platform extends JComponent {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	ClassLoader cl = this.getClass().getClassLoader();
-	
+
 	private BufferedImage img;
 	private Dimension dim;
 	private int x, y;
-	
-	public Dimension getDim(){
+	private Size size;
+
+	public enum Size {
+		Large, Small
+	}
+
+	public Dimension getDim() {
 		return dim;
 	}
-	
-	public void setDim(Dimension dim){
+
+	public void setDim(Dimension dim) {
 		this.dim = dim;
 	}
 
-	public void setDim(int x, int y){
+	public void setDim(int x, int y) {
 		dim.setSize(x, y);
 	}
-	
-	public int getX(){
+
+	public int getX() {
 		return x;
 	}
-	
-	public int getY(){
+
+	public int getY() {
 		return y;
 	}
-	
-	public void setX(int x){
+
+	public void setX(int x) {
 		this.x = x;
 	}
-	
-	public void setY(int y){
+
+	public void setY(int y) {
 		this.y = y;
 	}
 
-	public LargePlatform(int x, int y) throws IOException {
+	public Platform(int x, int y, Size s) throws IOException {
 		this.x = x;
 		this.y = y;
-		dim = new Dimension(500, 20);
-		this.img = ImageIO.read(cl.getResource("img/largeplatform.png"));
+		size = s;
+		switch(size){
+		case Large:
+			dim = new Dimension(500, 20);
+			this.img = ImageIO.read(cl.getResource("img/largeplatform.png"));
+			break;
+		case Small:
+			System.out.println("small platform does not exist.");
+			break;
+		}
 		GameLevel.addPlatform(this);
 	}
-	
-	public LargePlatform(int x, int y, Dimension dim, BufferedImage img) {
+
+	public Platform(int x, int y, Dimension dim, BufferedImage img) {
 		this.x = x;
 		this.y = y;
 		this.dim = dim;
 		this.img = img;
 		GameLevel.addPlatform(this);
 	}
-	
-	public LargePlatform(int x, int y, int xPos, int yPos, BufferedImage img) {
+
+	public Platform(int x, int y, int xPos, int yPos, BufferedImage img) {
 		this.x = x;
 		this.y = y;
 		setDim(xPos, yPos);
@@ -72,28 +86,37 @@ public class LargePlatform extends JComponent{
 		GameLevel.addPlatform(this);
 		repaint();
 	}
-	
-	public LargePlatform(int x, int y, Dimension dim, String path) throws IOException {
+
+	public Platform(int x, int y, Dimension dim, String path) throws IOException {
 		this.x = x;
 		this.y = y;
 		this.dim = dim;
 		this.img = ImageIO.read(cl.getResource(path));
 		GameLevel.addPlatform(this);
 	}
-	
-	public LargePlatform(int x, int y, int xPos, int yPos, String path) throws IOException {
+
+	public Platform(int x, int y, int xPos, int yPos, String path) throws IOException {
 		this.x = x;
 		this.y = y;
 		setDim(xPos, yPos);
 		this.img = ImageIO.read(cl.getResource(path));
 		GameLevel.addPlatform(this);
 	}
-	
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Game2.log("drew platform ");
 		g.drawImage(img, x, y, this);
+	}
+
+	public boolean inBounds(int x, int y) {
+		if (x > this.x && x < this.x+this.dim.width){
+			if (Settings.verboseMode) System.out.print(x > this.x && x < this.x+this.dim.width);
+			if (y + 110 == this.y){
+				if (Settings.verboseMode) System.out.print(y + 110 == this.y);
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -39,5 +39,6 @@ public class WindowRunner {
 
 	public static void run() {
 		//Game2.getPlayer().repaint();
+		Game2.getPlayer().gravity();
 	}
 }

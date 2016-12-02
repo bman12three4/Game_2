@@ -20,15 +20,18 @@ package developers;
 
 import java.io.IOException;
 
-import developers.elements.LargePlatform;
+import developers.elements.Platform;
 
 public class Game2 {
 
 	private static boolean init = false;
+	private static boolean halt = false;
 
 	private static Player player;
-	static LargePlatform plat1;
-	static LargePlatform plat2;
+	static Platform plat1;
+	static Platform plat2;
+	
+	static int i = 0;
 
 	public static Player getPlayer() {
 		return player;
@@ -43,12 +46,14 @@ public class Game2 {
 			printLicense();
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
-			plat1 = new LargePlatform(200, 300);
-			plat2 = new LargePlatform(100, 600);
+			plat1 = new Platform(200, 300, Platform.Size.Large);
+			plat2 = new Platform(100, 600, Platform.Size.Large);
 			WindowRunner.getPanel().repaint();
 			init = true;
 		}
-		WindowRunner.run();
+		while (!halt){
+			WindowRunner.run();
+		}
 	}
 	
 	public static final void printLicense(){

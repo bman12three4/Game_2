@@ -5,20 +5,19 @@ import java.awt.Graphics;
 import developers.Game2;
 
 public class GameLevel {
-
-	public GameLevel() {
-		// TODO Auto-generated constructor stub
-	}
 	
-	private static LargePlatform[] lPlatforms = new LargePlatform[6];
+	private static Platform[] platforms = new Platform[6];
 	private static int platNum = 0;
 	
-	public static LargePlatform getPlat(int plat){
-		return lPlatforms[plat];
+	public static int getPlatNum(){
+		return platNum;
+	}
+	public static Platform getPlat(int plat){
+		return platforms[plat];
 	}
 	
-	public static LargePlatform[] getPlat(){
-		return lPlatforms;
+	public static Platform[] getPlat(){
+		return platforms;
 	}
 	
 	public static final int[] xBoundLeft = {0};
@@ -33,18 +32,18 @@ public class GameLevel {
 		return false;
 	}
 	
-	public static void addPlatform(LargePlatform plat){
-		lPlatforms[platNum] = plat;
+	public static void addPlatform(Platform plat){
+		platforms[platNum] = plat;
 		platNum++;
 		for (int i = 0; i < platNum; i++){
-			lPlatforms[i].repaint();
+			platforms[i].repaint();
 			Game2.log("repainting plats " + i);
 		}
 	}
 	
 	public static void paintPlats(Graphics g){
 		for (int i = 0; i < platNum; i++){
-			lPlatforms[i].paintComponent(g);
+			platforms[i].paintComponent(g);
 		}
 	}
 

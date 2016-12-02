@@ -21,6 +21,7 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 import developers.elements.GameLevel;
+import developers.elements.Platform;
 
 public class Player extends JComponent {
 
@@ -133,6 +134,34 @@ public class Player extends JComponent {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img, xPos, yPos, this);
+	}
+	
+	private boolean checkBounds(){
+		if (xPos < 200 && yPos > 500){
+			return true;
+		}
+		Platform[] plats = GameLevel.getPlat();
+		for (int i = 0; i < GameLevel.getPlatNum(); i++){
+			if (plats[i].inBounds(xPos, yPos)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void gravity(){
+		int fDelay = 0;
+		if (Settings.verboseMode) System.out.println("Checking Gravity");
+		while (!checkBounds()){
+			if(Settings.verboseMode) System.out.println("Gravity be pullin");
+			if (fDelay == 1000){
+				yPos += 1;
+				fDelay = 0;
+				WindowRunner.getPanel().repaint();
+			}
+			fDelay++;
+			
+		}
 	}
 
 	class HorizAction extends AbstractAction {
