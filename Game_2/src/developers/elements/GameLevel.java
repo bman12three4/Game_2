@@ -9,6 +9,9 @@ public class GameLevel {
 	private static Platform[] platforms = new Platform[6];
 	private static int platNum = 0;
 	
+	private static Ladder[] ladders = new Ladder[10];
+	private static int ladNum = 0;
+	
 	public static int getPlatNum(){
 		return platNum;
 	}
@@ -41,9 +44,24 @@ public class GameLevel {
 		}
 	}
 	
+	public static void addLadder(Ladder lad){
+		ladders[ladNum] = lad;
+		ladNum++;
+		for (int i = 0; i < ladNum; i++){
+			ladders[i].repaint();
+			Game2.log("repainting lads " + i);
+		}
+	}
+	
 	public static void paintPlats(Graphics g){
 		for (int i = 0; i < platNum; i++){
 			platforms[i].paintComponent(g);
+		}
+	}
+	
+	public static void paintLads(Graphics g){
+		for (int i = 0; i < ladNum; i++){
+			ladders[i].paintComponent(g);
 		}
 	}
 

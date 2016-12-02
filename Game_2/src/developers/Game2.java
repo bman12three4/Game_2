@@ -20,6 +20,7 @@ package developers;
 
 import java.io.IOException;
 
+import developers.elements.Ladder;
 import developers.elements.Platform;
 
 public class Game2 {
@@ -30,6 +31,7 @@ public class Game2 {
 	private static Player player;
 	static Platform plat1;
 	static Platform plat2;
+	static Ladder ladder;
 	
 	static int i = 0;
 
@@ -48,6 +50,7 @@ public class Game2 {
 			WindowRunner.init("Game_2");
 			plat1 = new Platform(200, 300, Platform.Size.Large);
 			plat2 = new Platform(100, 600, Platform.Size.Large);
+			ladder = new Ladder(100, 700);
 			WindowRunner.getPanel().repaint();
 			init = true;
 		}

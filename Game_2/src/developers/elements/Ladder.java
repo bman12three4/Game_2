@@ -17,17 +17,6 @@ public class Ladder extends JComponent{
 	private BufferedImage img;
 	
 	ClassLoader cl = this.getClass().getClassLoader();
-
-	public Ladder() throws IOException {
-		this.dim = null;
-		this.img = null;
-	}
-	
-	public Ladder(int x, int y) throws IOException{
-		this.xPos = x;
-		this.yPos = y;
-		img = ImageIO.read(cl.getResource("img/largeplatform.png"));
-	}
 	
 	/**
 	 * @return the dim
@@ -85,18 +74,17 @@ public class Ladder extends JComponent{
 		this.img = img;
 	}
 
-	/**
-	 * @return the cl
-	 */
-	public ClassLoader getCl() {
-		return cl;
+	public Ladder() throws IOException {
+		this.dim = null;
+		this.img = null;
+		GameLevel.addLadder(this);
 	}
-
-	/**
-	 * @param cl the cl to set
-	 */
-	public void setCl(ClassLoader cl) {
-		this.cl = cl;
+	
+	public Ladder(int x, int y) throws IOException{
+		this.xPos = x;
+		this.yPos = y;
+		img = ImageIO.read(cl.getResource("img/ladder.png"));
+		GameLevel.addLadder(this);
 	}
 
 	public Ladder(int x, int y, String img, Dimension dim) throws IOException{
@@ -104,6 +92,7 @@ public class Ladder extends JComponent{
 		this.yPos = y;
 		this.dim = dim;
 		this.img = ImageIO.read(cl.getResource(img));
+		GameLevel.addLadder(this);
 	}
 	
 	public Ladder(int x, int y, BufferedImage img, Dimension dim) throws IOException{
@@ -111,6 +100,7 @@ public class Ladder extends JComponent{
 		this.yPos = y;
 		this.dim = dim;
 		this.img = img;
+		GameLevel.addLadder(this);
 	}
 	
 	public void paintComponent(Graphics g) {
