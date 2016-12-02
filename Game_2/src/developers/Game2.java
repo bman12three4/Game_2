@@ -45,6 +45,7 @@ public class Game2 {
 			WindowRunner.init("Game_2");
 			plat1 = new LargePlatform(200, 300);
 			plat2 = new LargePlatform(100, 600);
+			WindowRunner.getPanel().repaint();
 			init = true;
 		}
 		WindowRunner.run();
