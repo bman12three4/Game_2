@@ -141,13 +141,13 @@ public class Player extends JComponent {
 
 	private boolean checkBounds() {
 		if (xPos < 200 && yPos > 500) {
-			System.out.println("");
+			System.out.print("");
 			return true;
 		}
 		Platform[] plats = GameLevel.getPlat();
-		System.out.println("");
+		System.out.print("");
 		for (int i = 0; i < GameLevel.getPlatNum(); i++) {
-			System.out.println("");
+			System.out.print("");
 			if (plats[i].inBounds(xPos, yPos)) {
 				return true;
 			}
@@ -156,17 +156,20 @@ public class Player extends JComponent {
 	}
 
 	public void gravity() {
-		if (enableGravity ) {
-			while (!checkBounds()) {
-				if (gDelay == 1000) {
-					System.out.println("");
-					yPos += 1;
-					gDelay = 1;
-					WindowRunner.getPanel().repaint();
+		System.out.print("");
+		if (enableGravity) {
+			//System.out.println("gravity enabled");
+			yDelta = moveSpeed;
+			if (!checkBounds()) {
+				if (!repaintTimer.isRunning()) {
+					repaintTimer.start();
 				}
-				gDelay++;
-
+			} else {
+				yDelta = 0;
+				repaintTimer.stop();
+				enableGravity = false;
 			}
+
 		}
 	}
 
@@ -235,6 +238,7 @@ public class Player extends JComponent {
 				enableGravity = false;
 			} else {
 				repaintTimer.stop();
+				//System.out.println("Enabling Gravity");
 				enableGravity = true;
 			}
 		}
