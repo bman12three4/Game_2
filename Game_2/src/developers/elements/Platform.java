@@ -8,7 +8,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
-import developers.Game2;
 import developers.Settings;
 
 public class Platform extends JComponent {
