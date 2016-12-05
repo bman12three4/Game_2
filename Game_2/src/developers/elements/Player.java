@@ -3,7 +3,7 @@
     Copyright (C) 2016  Lovett Developers Club
 */
 
-package developers;
+package developers.elements;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
-import developers.elements.GameLevel;
+import developers.WindowRunner;
 
 public class Player extends JComponent {
 
