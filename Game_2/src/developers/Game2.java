@@ -29,9 +29,6 @@ public class Game2 {
 	private static boolean halt = false;
 
 	private static Player player;
-	static Platform plat1;
-	static Platform plat2;
-	static Ladder ladder;
 	
 	static int i = 0;
 
@@ -48,10 +45,11 @@ public class Game2 {
 			printLicense();
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
-			plat1 = new Platform(200, 500, Platform.Size.Large);
-			plat2 = new Platform(100, 700, Platform.Size.Large);
-			ladder = new Ladder(100, 700);
-			ladder = new Ladder(200, 500);
+			new Platform(200, 500, Platform.Size.Large);
+			new Platform(100, 700, Platform.Size.Large);
+			new Platform(0, 500, Platform.Size.Small);
+			new Ladder(100, 700);
+			new Ladder(200, 500);
 			WindowRunner.getPanel().repaint();
 			init = true;
 		}

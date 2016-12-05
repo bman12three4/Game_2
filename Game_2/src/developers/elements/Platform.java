@@ -63,7 +63,8 @@ public class Platform extends JComponent {
 			this.img = ImageIO.read(cl.getResource("img/largeplatform.png"));
 			break;
 		case Small:
-			System.out.println("small platform does not exist.");
+			dim = new Dimension(200, 20);
+			this.img = ImageIO.read(cl.getResource("img/smallplatform.png"));
 			break;
 		}
 		GameLevel.addPlatform(this);
