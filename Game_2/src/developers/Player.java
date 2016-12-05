@@ -21,7 +21,6 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 import developers.elements.GameLevel;
-import developers.elements.Platform;
 
 public class Player extends JComponent {
 
@@ -30,8 +29,6 @@ public class Player extends JComponent {
 	private int moveSpeed = 5;
 	private int xDelta = 0;
 	private int yDelta = 0;
-
-	private int gDelay = 0;
 
 	private Timer repaintTimer;
 
