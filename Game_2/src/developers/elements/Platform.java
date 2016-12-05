@@ -117,7 +117,7 @@ public class Platform extends JComponent {
 			if (Settings.verboseMode) {
 				System.out.print(x > this.x && x < this.x + this.dim.width);
 			}
-			if (y + 110 >= this.y && y + 105 <= this.y) {
+			if (y + 110 >= this.y && y + 100 <= this.y) {
 				if (Settings.verboseMode) {
 					System.out.print(y + 110 == this.y);
 				}
