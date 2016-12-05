@@ -201,8 +201,10 @@ public class Player extends JComponent {
 				if (!repaintTimer.isRunning()) {
 					repaintTimer.start();
 				}
+				enableGravity = false;
 			} else {
 				repaintTimer.stop();
+				enableGravity = true;
 			}
 		}
 	}
