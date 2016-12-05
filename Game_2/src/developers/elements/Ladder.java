@@ -110,7 +110,7 @@ public class Ladder extends JComponent{
 	}
 	
 	public boolean inBounds(int x, int y) {
-		if (x > this.xPos && x < this.xPos + this.dim.width) {
+		if (x > this.xPos && x+50 < this.xPos + this.dim.width) {
 			if (y + 110 >= this.yPos && y - 150 <= this.yPos) {
 				return true;
 			}
