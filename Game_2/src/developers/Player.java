@@ -141,14 +141,13 @@ public class Player extends JComponent {
 
 	private boolean checkBounds() {
 		if (xPos < 200 && yPos > 500) {
-			System.out.print("");
+			System.out.print(""); // These are for timing, idk why
 			return true;
 		}
-		Platform[] plats = GameLevel.getPlat();
-		System.out.print("");
+		System.out.print(""); // These are for timing, idk why
 		for (int i = 0; i < GameLevel.getPlatNum(); i++) {
 			System.out.print("");
-			if (plats[i].inBounds(xPos, yPos)) {
+			if (GameLevel.getPlat()[i].inBounds(xPos, yPos)) {
 				return true;
 			}
 		}
