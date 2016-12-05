@@ -12,6 +12,8 @@ public class GameLevel {
 	private static Ladder[] ladders = new Ladder[10];
 	private static int ladNum = 0;
 	
+	private static Floor floor = new Floor(100);
+	
 	public static int getPlatNum(){
 		return platNum;
 	}
@@ -63,6 +65,10 @@ public class GameLevel {
 		for (int i = 0; i < ladNum; i++){
 			ladders[i].paintComponent(g);
 		}
+	}
+	
+	public static void paintFloor(Graphics g){
+		floor.paintComponent(g);
 	}
 
 }

@@ -58,6 +58,7 @@ public class Window extends JPanel {
 		Game2.getPlayer().paintComponent(g);
 		GameLevel.paintPlats(g);
 		GameLevel.paintLads(g);
+		GameLevel.paintFloor(g);
 	}
 
 }

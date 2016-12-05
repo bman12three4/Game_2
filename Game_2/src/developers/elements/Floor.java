@@ -23,7 +23,7 @@ public class Floor extends JComponent{
 		//g.drawImage(img, x, y, this);
 		// Change this to an image once you make one
 		g.setColor(Color.BLACK);
-		g.drawRect(0, 1000-y, 800, y);
+		g.fillRect(0, 1000-y, 800, y);
 	}
 
 }
