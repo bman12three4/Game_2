@@ -14,6 +14,10 @@ public class GameLevel {
 	
 	private static Floor floor = new Floor(100);
 	
+	public static Floor getFloor(){
+		return floor;
+	}
+	
 	public static int getPlatNum(){
 		return platNum;
 	}

@@ -26,7 +26,7 @@ import developers.elements.Platform;
 public class Player extends JComponent {
 
 	private static final long serialVersionUID = 1L;
-	private int xPos = 50, yPos = 800;
+	private int xPos = 50, yPos = 775;
 	private int moveSpeed = 5;
 	private int xDelta = 0;
 	private int yDelta = 0;
@@ -151,6 +151,9 @@ public class Player extends JComponent {
 			if (plats[i].inBounds(xPos, yPos)) {
 				return true;
 			}
+		}
+		if (yPos+110 >= 1000-GameLevel.getFloor().getY()){
+			return true;
 		}
 		return false;
 	}

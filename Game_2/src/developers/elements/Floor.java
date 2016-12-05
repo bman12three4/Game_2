@@ -8,7 +8,11 @@ import javax.swing.JComponent;
 public class Floor extends JComponent{
 
 	private static final long serialVersionUID = 1L;
-	int y;
+	private int y;
+	
+	public int getY(){
+		return y;
+	}
 
 	public Floor() {
 		
