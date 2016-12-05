@@ -48,10 +48,10 @@ public class Game2 {
 			printLicense();
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
-			plat1 = new Platform(200, 400, Platform.Size.Large);
+			plat1 = new Platform(200, 500, Platform.Size.Large);
 			plat2 = new Platform(100, 700, Platform.Size.Large);
 			ladder = new Ladder(100, 700);
-			ladder = new Ladder(200, 400);
+			ladder = new Ladder(200, 500);
 			WindowRunner.getPanel().repaint();
 			init = true;
 		}

@@ -8,8 +8,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
-import developers.Settings;
-
 public class Ladder extends JComponent{
 	
 	private static final long serialVersionUID = 1L;
