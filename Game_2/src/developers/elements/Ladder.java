@@ -83,12 +83,13 @@ public class Ladder extends JComponent{
 	public Ladder(int x, int y) throws IOException{
 		this.xPos = x;
 		this.yPos = y;
+		dim = new Dimension(75, 150);
 		img = ImageIO.read(cl.getResource("img/ladder.png"));
 		GameLevel.addLadder(this);
 	}
 
 	public Ladder(int x, int y, String img, Dimension dim) throws IOException{
-		this.xPos =x;
+		this.xPos = x;
 		this.yPos = y;
 		this.dim = dim;
 		this.img = ImageIO.read(cl.getResource(img));
