@@ -46,9 +46,8 @@ public class Game2 {
 			printLicense();
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
-			new Platform(200, 500, Size.Large);
-			new Platform(100, 700, Size.Large);
-			new Platform(0, 500, Size.Small);
+			new Platform(50, 500, Size.Full);
+			new Platform(50, 700, Size.Full);
 			new Ladder(100, 700);
 			new Ladder(200, 500);
 			WindowRunner.getPanel().repaint();

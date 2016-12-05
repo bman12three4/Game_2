@@ -22,7 +22,7 @@ public class Platform extends JComponent {
 	private Size size;
 
 	public enum Size {
-		Large, Small
+		Large, Small, Full
 	}
 
 	public Dimension getDim() {
@@ -65,6 +65,10 @@ public class Platform extends JComponent {
 		case Small:
 			dim = new Dimension(200, 20);
 			this.img = ImageIO.read(cl.getResource("img/smallplatform.png"));
+			break;
+		case Full:
+			dim = new Dimension(700, 20);
+			this.img = ImageIO.read(cl.getResource("img/fullplatform.png"));
 			break;
 		}
 		GameLevel.addPlatform(this);
