@@ -44,7 +44,7 @@ public class Game2 {
 	public static void main(String[] args) throws IOException {
 		if (!init) {
 			printLicense();
-			player = new Player("img/dude.png");
+			player = new Player("img/player2.jpg");
 			WindowRunner.init("Game_2");
 			new Platform(25, 300, Size.Full);
 			new Platform(25, 500, Size.Full);

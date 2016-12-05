@@ -161,8 +161,8 @@ public class Player extends JComponent {
 		System.out.print("");
 		if (enableGravity) {
 			//System.out.println("gravity enabled");
-			yDelta = moveSpeed;
 			if (!checkBounds()) {
+				yDelta = moveSpeed;
 				if (!repaintTimer.isRunning()) {
 					repaintTimer.start();
 				}
