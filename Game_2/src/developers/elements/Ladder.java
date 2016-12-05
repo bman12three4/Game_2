@@ -8,6 +8,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
+import developers.Settings;
+
 public class Ladder extends JComponent{
 	
 	private static final long serialVersionUID = 1L;
@@ -107,6 +109,15 @@ public class Ladder extends JComponent{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img, xPos, yPos, this);
+	}
+	
+	public boolean inBounds(int x, int y) {
+		if (x > this.xPos && x < this.xPos + this.dim.width) {
+			if (y + 110 >= this.yPos && y - 150 <= this.yPos) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

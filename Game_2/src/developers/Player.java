@@ -140,18 +140,21 @@ public class Player extends JComponent {
 	}
 
 	private boolean checkBounds() {
-		if (xPos < 200 && yPos > 500) {
-			System.out.print(""); // These are for timing, idk why
-			return true;
-		}
 		System.out.print(""); // These are for timing, idk why
 		for (int i = 0; i < GameLevel.getPlatNum(); i++) {
-			System.out.print("");
+			System.out.print(""); // Timing reasions (idk)
 			if (GameLevel.getPlat()[i].inBounds(xPos, yPos)) {
 				return true;
 			}
 		}
+		for (int i = 0; i < GameLevel.getLadNum(); i++){
+			System.out.print(""); // Timing reasions (idk)
+			if (GameLevel.getLadder()[i].inBounds(xPos, yPos)){
+				return true;
+			}
+		}
 		if (yPos+110 >= 1000-GameLevel.getFloor().getY()){
+			System.out.print(""); // Timing reasions (idk)
 			return true;
 		}
 		return false;

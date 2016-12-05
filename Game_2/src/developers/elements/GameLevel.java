@@ -29,6 +29,18 @@ public class GameLevel {
 		return platforms;
 	}
 	
+	public static int getLadNum(){
+		return ladNum;
+	}
+	
+	public static Ladder getLadder(int lad){
+		return ladders[lad];
+	}
+	
+	public static Ladder[] getLadder(){
+		return ladders;
+	}
+	
 	public static final int[] xBoundLeft = {0};
 	public static final int[] xBoundRight = {800};
 	
