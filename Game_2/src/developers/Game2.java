@@ -22,6 +22,7 @@ import java.io.IOException;
 
 import developers.elements.Ladder;
 import developers.elements.Platform;
+import developers.elements.Platform.Size;
 
 public class Game2 {
 
@@ -45,9 +46,9 @@ public class Game2 {
 			printLicense();
 			player = new Player("img/dude.png");
 			WindowRunner.init("Game_2");
-			new Platform(200, 500, Platform.Size.Large);
-			new Platform(100, 700, Platform.Size.Large);
-			new Platform(0, 500, Platform.Size.Small);
+			new Platform(200, 500, Size.Large);
+			new Platform(100, 700, Size.Large);
+			new Platform(0, 500, Size.Small);
 			new Ladder(100, 700);
 			new Ladder(200, 500);
 			WindowRunner.getPanel().repaint();
