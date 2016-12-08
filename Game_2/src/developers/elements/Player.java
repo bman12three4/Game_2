@@ -82,7 +82,17 @@ public class Player extends JComponent {
 		}
 		setFocusable(true);
 		WindowRunner.getPanel().add(this);
+	}
 
+	/**
+	 * @deprecated
+	 * 
+	 * 			This was the old way of moving the player but it was really
+	 *             complicated and didn't really work the way that I wanted it
+	 *             too.
+	 */
+	@SuppressWarnings("unused")
+	private void theOldWay() {
 		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = getActionMap();
 
@@ -144,13 +154,13 @@ public class Player extends JComponent {
 				return true;
 			}
 		}
-		for (int i = 0; i < GameLevel.getLadNum(); i++){
+		for (int i = 0; i < GameLevel.getLadNum(); i++) {
 			System.out.print(""); // Timing reasions (idk)
-			if (GameLevel.getLadder()[i].inBounds(xPos, yPos)){
+			if (GameLevel.getLadder()[i].inBounds(xPos, yPos)) {
 				return true;
 			}
 		}
-		if (yPos+110 >= 1000-GameLevel.getFloor().getY()){
+		if (yPos + 110 >= 1000 - GameLevel.getFloor().getY()) {
 			System.out.print(""); // Timing reasions (idk)
 			return true;
 		}
@@ -160,7 +170,7 @@ public class Player extends JComponent {
 	public void gravity() {
 		System.out.print("");
 		if (enableGravity) {
-			//System.out.println("gravity enabled");
+			// System.out.println("gravity enabled");
 			if (!checkBounds()) {
 				yDelta = moveSpeed;
 				if (!repaintTimer.isRunning()) {
@@ -175,6 +185,11 @@ public class Player extends JComponent {
 		}
 	}
 
+	/**
+	 * @deprecated
+	 * @author Byron Lathi
+	 *
+	 */
 	class HorizAction extends AbstractAction {
 
 		/**
@@ -209,6 +224,11 @@ public class Player extends JComponent {
 		}
 	}
 
+	/**
+	 * @deprecated
+	 * @author Byron Lathi
+	 *
+	 */
 	class VertAction extends AbstractAction {
 
 		/**
@@ -242,7 +262,7 @@ public class Player extends JComponent {
 				enableGravity = false;
 			} else {
 				repaintTimer.stop();
-				//System.out.println("Enabling Gravity");
+				// System.out.println("Enabling Gravity");
 				enableGravity = true;
 			}
 		}
