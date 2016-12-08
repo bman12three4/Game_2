@@ -23,6 +23,7 @@ import java.io.IOException;
 import developers.elements.Ladder;
 import developers.elements.Platform;
 import developers.elements.Platform.Size;
+import developers.elements.Player;
 
 public class Game2 {
 
@@ -44,7 +45,7 @@ public class Game2 {
 	public static void main(String[] args) throws IOException {
 		if (!init) {
 			printLicense();
-			System.out.println("licnse");
+			System.out.println("license");
 			player = new Player("img/player2.jpg");
 			WindowRunner.init("Game_2");
 			System.out.println("window");
@@ -61,7 +62,6 @@ public class Game2 {
 			init = true;
 		}
 		while (!halt){
-			System.out.println("asdfasdfasdf");
 			WindowRunner.run();
 		}
 	}

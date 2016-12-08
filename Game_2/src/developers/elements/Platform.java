@@ -72,7 +72,6 @@ public class Platform extends JComponent {
 			break;
 		}
 		GameLevel.addPlatform(this);
-		System.out.println("plat " + this + " made");
 	}
 
 	public Platform(int x, int y, Dimension dim, BufferedImage img) {

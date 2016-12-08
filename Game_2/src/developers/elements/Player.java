@@ -82,6 +82,8 @@ public class Player extends JComponent {
 		}
 		setFocusable(true);
 		WindowRunner.getPanel().add(this);
+		
+		theOldWay();
 	}
 
 	/**
