@@ -95,55 +95,7 @@ public class Player extends JComponent {
 		repaintTimer.setRepeats(true);
 		repaintTimer.setCoalesce(true);
 
-		//theOldWay();
-	}
-
-	/**
-	 * @deprecated
-	 * 
-	 * 			This was the old way of moving the player but it was really
-	 *             complicated and didn't really work the way that I wanted it
-	 *             too.
-	 */
-	private void theOldWay() {
-		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
-		ActionMap am = getActionMap();
-
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "pressed.left");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "pressed.right");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "released.left");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "released.right");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
-
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false), "pressed.left");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, false), "pressed.right");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, true), "released.left");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, true), "released.right");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
-
-		am.put("pressed.left", new HorizAction(-1, true));
-		am.put("pressed.right", new HorizAction(1, true));
-		am.put("released.left", new HorizAction(0, false));
-		am.put("released.right", new HorizAction(0, false));
-		am.put("pressed.up", new VertAction(-1, true));
-		am.put("pressed.down", new VertAction(1, true));
-		am.put("released.up", new VertAction(0, false));
-		am.put("released.down", new VertAction(0, false));
-
-		/*
-		 * repaintTimer = new Timer(40, new ActionListener() {
-		 * 
-		 * @Override public void actionPerformed(ActionEvent e) { xPos +=
-		 * xDelta; yPos += yDelta; WindowRunner.getPanel().repaint(); } });
-		 * repaintTimer.setInitialDelay(0); repaintTimer.setRepeats(true);
-		 * repaintTimer.setCoalesce(true);
-		 */
+		// theOldWay();
 	}
 
 	/**
@@ -189,6 +141,59 @@ public class Player extends JComponent {
 	}
 
 	/**
+	 * @deprecated Methods
+	 */
+	
+	/**
+	 * @deprecated use the IsKeyPressed class instead <p><p>
+	 * 
+	 * 			This was the old way of moving the player but it was really
+	 *             complicated and didn't really work the way that I wanted it
+	 *             too.
+	 */
+	@SuppressWarnings("unused")
+	private void theOldWay() {
+		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
+		ActionMap am = getActionMap();
+
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, false), "pressed.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, false), "pressed.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0, true), "released.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "released.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
+
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false), "pressed.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, false), "pressed.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, true), "released.left");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_D, 0, true), "released.right");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, false), "pressed.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), "pressed.down");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0, true), "released.up");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, true), "released.down");
+
+		am.put("pressed.left", new HorizAction(-1, true));
+		am.put("pressed.right", new HorizAction(1, true));
+		am.put("released.left", new HorizAction(0, false));
+		am.put("released.right", new HorizAction(0, false));
+		am.put("pressed.up", new VertAction(-1, true));
+		am.put("pressed.down", new VertAction(1, true));
+		am.put("released.up", new VertAction(0, false));
+		am.put("released.down", new VertAction(0, false));
+
+		/*
+		 * repaintTimer = new Timer(40, new ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) { xPos +=
+		 * xDelta; yPos += yDelta; WindowRunner.getPanel().repaint(); } });
+		 * repaintTimer.setInitialDelay(0); repaintTimer.setRepeats(true);
+		 * repaintTimer.setCoalesce(true);
+		 */
+	}
+
+	/**
 	 * @deprecated
 	 */
 	public void oldgravity() {
@@ -208,12 +213,6 @@ public class Player extends JComponent {
 
 		}
 	}
-
-	////////////////////////////////////////////////////////
-	// //
-	// The rest of this class is all deprecated //
-	// //
-	////////////////////////////////////////////////////////
 
 	/**
 	 * @deprecated
