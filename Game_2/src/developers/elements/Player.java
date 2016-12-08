@@ -167,7 +167,21 @@ public class Player extends JComponent {
 		return false;
 	}
 
-	public void gravity() {
+	public void gravity(){
+		System.out.print("");
+		if (enableGravity){
+			if (!checkBounds()){
+				yDelta = moveSpeed;
+			} else {
+				yDelta = 0; // Maybe change this later so it doesnt interfere
+			}
+		} 
+	}
+	
+	/**
+	 * @deprecated
+	 */
+	public void oldgravity() {
 		System.out.print("");
 		if (enableGravity) {
 			// System.out.println("gravity enabled");

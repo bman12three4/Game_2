@@ -45,18 +45,24 @@ public class Game2 {
 	public static void main(String[] args) throws IOException {
 		if (!init) {
 			printLicense();
+			System.out.println("licnse");
 			player = new Player("img/player2.jpg");
 			WindowRunner.init("Game_2");
+			System.out.println("window");
 			new Platform(25, 300, Size.Full);
+			System.out.println("firstplat");
 			new Platform(25, 500, Size.Full);
 			new Platform(25, 700, Size.Full);
 			new Ladder(100, 700);
 			new Ladder(600, 500);
 			new Ladder(200, 300);
+			System.out.println("platforms");
 			WindowRunner.getPanel().repaint();
+			System.out.println("first paint");
 			init = true;
 		}
 		while (!halt){
+			System.out.println("asdfasdfasdf");
 			WindowRunner.run();
 		}
 	}

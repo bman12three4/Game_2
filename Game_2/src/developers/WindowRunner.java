@@ -37,7 +37,7 @@ public class WindowRunner {
 		frame.setVisible(true);
 	}
 
-	public static void run() {
+	public static synchronized void run() {
 		//Game2.getPlayer().repaint();
 		Game2.getPlayer().gravity();
 	}
