@@ -14,8 +14,6 @@ public class GameLevel {
 	
 	private static Floor floor = new Floor(100);
 	
-	private static Mother mom = new Mother("img/themother.png");
-	
 	public static Floor getFloor(){
 		return floor;
 	}
@@ -87,10 +85,6 @@ public class GameLevel {
 	
 	public static void paintFloor(Graphics g){
 		floor.paintComponent(g);
-	}
-	
-	public static void paintMother(Graphics g){
-		mom.paintComponent(g);
 	}
 
 }

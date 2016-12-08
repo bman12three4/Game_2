@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import developers.elements.Ladder;
 import developers.elements.Platform;
-import developers.elements.Player;
 import developers.elements.Platform.Size;
 
 public class Game2 {

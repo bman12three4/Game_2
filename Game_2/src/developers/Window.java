@@ -55,11 +55,10 @@ public class Window extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.drawImage(img, 0, 0, this);
+		Game2.getPlayer().paintComponent(g);
 		GameLevel.paintPlats(g);
 		GameLevel.paintLads(g);
 		GameLevel.paintFloor(g);
-		GameLevel.paintMother(g);
-		Game2.getPlayer().paintComponent(g);
 	}
 
 }
