@@ -82,8 +82,20 @@ public class Player extends JComponent {
 		}
 		setFocusable(true);
 		WindowRunner.getPanel().add(this);
-		
-		theOldWay();
+
+		repaintTimer = new Timer(40, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				xPos += xDelta;
+				yPos += yDelta;
+				WindowRunner.getPanel().repaint();
+			}
+		});
+		repaintTimer.setInitialDelay(0);
+		repaintTimer.setRepeats(true);
+		repaintTimer.setCoalesce(true);
+
+		//theOldWay();
 	}
 
 	/**
@@ -93,7 +105,6 @@ public class Player extends JComponent {
 	 *             complicated and didn't really work the way that I wanted it
 	 *             too.
 	 */
-	@SuppressWarnings("unused")
 	private void theOldWay() {
 		InputMap im = getInputMap(WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = getActionMap();
@@ -125,17 +136,14 @@ public class Player extends JComponent {
 		am.put("released.up", new VertAction(0, false));
 		am.put("released.down", new VertAction(0, false));
 
-		repaintTimer = new Timer(40, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				xPos += xDelta;
-				yPos += yDelta;
-				WindowRunner.getPanel().repaint();
-			}
-		});
-		repaintTimer.setInitialDelay(0);
-		repaintTimer.setRepeats(true);
-		repaintTimer.setCoalesce(true);
+		/*
+		 * repaintTimer = new Timer(40, new ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) { xPos +=
+		 * xDelta; yPos += yDelta; WindowRunner.getPanel().repaint(); } });
+		 * repaintTimer.setInitialDelay(0); repaintTimer.setRepeats(true);
+		 * repaintTimer.setCoalesce(true);
+		 */
 	}
 
 	/**
@@ -169,17 +177,17 @@ public class Player extends JComponent {
 		return false;
 	}
 
-	public void gravity(){
+	public void gravity() {
 		System.out.print("");
-		if (enableGravity){
-			if (!checkBounds()){
+		if (enableGravity) {
+			if (!checkBounds()) {
 				yDelta = moveSpeed;
 			} else {
 				yDelta = 0; // Maybe change this later so it doesnt interfere
 			}
-		} 
+		}
 	}
-	
+
 	/**
 	 * @deprecated
 	 */
@@ -200,17 +208,12 @@ public class Player extends JComponent {
 
 		}
 	}
-	
-	
+
 	////////////////////////////////////////////////////////
-	//   												  //
-	//		The rest of this class is all deprecated	  //
-	//													  //
+	// //
+	// The rest of this class is all deprecated //
+	// //
 	////////////////////////////////////////////////////////
-	
-	
-	
-	
 
 	/**
 	 * @deprecated
