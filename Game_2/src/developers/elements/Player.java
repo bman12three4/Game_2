@@ -184,6 +184,17 @@ public class Player extends JComponent {
 
 		}
 	}
+	
+	
+	////////////////////////////////////////////////////////
+	//   												  //
+	//		The rest of this class is all deprecated	  //
+	//													  //
+	////////////////////////////////////////////////////////
+	
+	
+	
+	
 
 	/**
 	 * @deprecated
