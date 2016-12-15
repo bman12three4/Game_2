@@ -24,75 +24,53 @@ import java.io.IOException;
 
 import javax.swing.Timer;
 
-import developers.elements.Ladder;
-import developers.elements.Platform;
-import developers.elements.Platform.Size;
+import developers.elements.GameLevel;
 import developers.elements.Player;
 
 public class Game2 {
 
-	private static boolean init = false;
-	private static boolean halt = false;
 
 	private static Player player;
-	
+
 	static int i = 0;
-	
 
 	public static Player getPlayer() {
 		return player;
 	}
 
-	public static boolean isInit() {
-		return init;
+	public static void main(String[] args) throws IOException {
+		init();
+		int delay = 20; // milliseconds
+		ActionListener taskPerformer = new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				run();
+			}
+		};
+		new Timer(delay, taskPerformer).start();
 	}
 
-	public static void main(String[] args) throws IOException {
-		if (!init) {
-			init();
-			init = true;
-		}
-		int delay = 20; //milliseconds
-		ActionListener taskPerformer = new ActionListener() {
-		      public void actionPerformed(ActionEvent evt) {
-		          run();
-		      }
-		  };
-		  new Timer(delay, taskPerformer).start();
-	}
-	
-	public static void init() throws IOException{
+	public static void init() throws IOException {
 		printLicense();
-		System.out.println("license");
 		player = new Player("img/player2.jpg");
 		WindowRunner.init("Game_2");
-		System.out.println("window");
-		new Platform(25, 300, Size.Full);
-		System.out.println("firstplat");
-		new Platform(25, 500, Size.Full);
-		new Platform(25, 700, Size.Full);
-		new Ladder(100, 700);
-		new Ladder(600, 500);
-		new Ladder(200, 300);
-		System.out.println("platforms");
+		GameLevel.generateLevel();
 		WindowRunner.getPanel().repaint();
-		System.out.println("first paint");
 	}
-	
-	public static void run(){
-		
+
+	public static void run() {
+
 	}
-	
-	public static final void printLicense(){
+
+	public static final void printLicense() {
 		System.out.println("Game_2  Copyright (C) 2016  Lovett Developers Club\n"
 				+ "This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n"
 				+ "This is free software, and you are welcome to redistribute it\n"
 				+ "under certain conditions; type `show c' for details.\n"
 				+ "\n(don't though, this doesn't take arguments)\n\n\n");
 	}
-	
-	public static void log(String s){
-		if (Settings.verboseMode){
+
+	public static void log(String s) {
+		if (Settings.verboseMode) {
 			System.out.println(s);
 		}
 	}

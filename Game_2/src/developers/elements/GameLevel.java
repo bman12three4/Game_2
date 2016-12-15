@@ -1,8 +1,10 @@
 package developers.elements;
 
 import java.awt.Graphics;
+import java.io.IOException;
 
 import developers.Game2;
+import developers.elements.Platform.Size;
 
 public class GameLevel {
 	
@@ -85,6 +87,16 @@ public class GameLevel {
 	
 	public static void paintFloor(Graphics g){
 		floor.paintComponent(g);
+	}
+
+	public static void generateLevel() throws IOException {
+		new Platform(25, 300, Size.Full);
+		new Platform(25, 500, Size.Full);
+		new Platform(25, 700, Size.Full);
+		new Ladder(100, 700);
+		new Ladder(600, 500);
+		new Ladder(200, 300);
+		
 	}
 
 }
