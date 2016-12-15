@@ -39,6 +39,6 @@ public class WindowRunner {
 
 	public static synchronized void run() {
 		//Game2.getPlayer().repaint();
-		Game2.getPlayer().gravity();
+		Game2.getPlayer().run();
 	}
 }

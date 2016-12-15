@@ -18,7 +18,11 @@
 
 package developers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
+
+import javax.swing.Timer;
 
 import developers.elements.Ladder;
 import developers.elements.Platform;
@@ -33,6 +37,7 @@ public class Game2 {
 	private static Player player;
 	
 	static int i = 0;
+	
 
 	public static Player getPlayer() {
 		return player;
@@ -44,26 +49,38 @@ public class Game2 {
 
 	public static void main(String[] args) throws IOException {
 		if (!init) {
-			printLicense();
-			System.out.println("license");
-			player = new Player("img/player2.jpg");
-			WindowRunner.init("Game_2");
-			System.out.println("window");
-			new Platform(25, 300, Size.Full);
-			System.out.println("firstplat");
-			new Platform(25, 500, Size.Full);
-			new Platform(25, 700, Size.Full);
-			new Ladder(100, 700);
-			new Ladder(600, 500);
-			new Ladder(200, 300);
-			System.out.println("platforms");
-			WindowRunner.getPanel().repaint();
-			System.out.println("first paint");
+			init();
 			init = true;
 		}
-		while (!halt){
-			WindowRunner.run();
-		}
+		int delay = 20; //milliseconds
+		ActionListener taskPerformer = new ActionListener() {
+		      public void actionPerformed(ActionEvent evt) {
+		          run();
+		      }
+		  };
+		  new Timer(delay, taskPerformer).start();
+	}
+	
+	public static void init() throws IOException{
+		printLicense();
+		System.out.println("license");
+		player = new Player("img/player2.jpg");
+		WindowRunner.init("Game_2");
+		System.out.println("window");
+		new Platform(25, 300, Size.Full);
+		System.out.println("firstplat");
+		new Platform(25, 500, Size.Full);
+		new Platform(25, 700, Size.Full);
+		new Ladder(100, 700);
+		new Ladder(600, 500);
+		new Ladder(200, 300);
+		System.out.println("platforms");
+		WindowRunner.getPanel().repaint();
+		System.out.println("first paint");
+	}
+	
+	public static void run(){
+		
 	}
 	
 	public static final void printLicense(){
